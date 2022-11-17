@@ -91,6 +91,12 @@ public class Registration extends javax.swing.JFrame {
             }
         });
 
+        jP_cPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jP_cPasswordActionPerformed(evt);
+            }
+        });
+
         jBtn_signIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtn_signIn.setText("Sign In");
         jBtn_signIn.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +244,10 @@ public class Registration extends javax.swing.JFrame {
         if(fname.isEmpty() || lname.isEmpty() || ic.isEmpty() || contact.isEmpty() || email.isEmpty() || password.isEmpty() || c_password.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please fill up the form", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
+        else if (password != c_password) {
+            JOptionPane.showMessageDialog(this, "Password does not match", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         else{
             //start the registration/sign up process.
             userRegister(fname, lname, ic, contact, email, password, c_password);
@@ -251,6 +261,10 @@ public class Registration extends javax.swing.JFrame {
     private void jTF_lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_lastNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTF_lastNameActionPerformed
+
+    private void jP_cPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jP_cPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jP_cPasswordActionPerformed
 
     /**
      * @param args the command line arguments

@@ -192,6 +192,9 @@
         <Component class="javax.swing.JPasswordField" name="jP_password">
         </Component>
         <Component class="javax.swing.JPasswordField" name="jP_cPassword">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jP_cPasswordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBtn_signIn">
           <Properties>
