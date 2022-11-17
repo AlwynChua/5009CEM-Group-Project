@@ -245,9 +245,6 @@ public class Registration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill up the form", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        else if (password != c_password) {
-            JOptionPane.showMessageDialog(this, "Password does not match", "Error", JOptionPane.ERROR_MESSAGE);
-        }
         else{
             //start the registration/sign up process.
             userRegister(fname, lname, ic, contact, email, password, c_password);
