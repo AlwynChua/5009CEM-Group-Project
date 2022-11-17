@@ -385,7 +385,7 @@ public class CompanyList extends javax.swing.JFrame {
                     String state = res.getString("state");
                     String zipcode = res.getString("zipcode");
 
-                    String tbData[] = {company_id, company_name, email, serviceType, address, city, state, zipcode};
+                    String tbData[] = {company_id, company_name, serviceType, address, city, state, zipcode, email};
                     DefaultTableModel tblModel = (DefaultTableModel) jT_company.getModel();
 
                     //add string array data into table
