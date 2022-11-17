@@ -56,6 +56,8 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
         jBtn_Exit = new javax.swing.JButton();
         jL_email = new javax.swing.JLabel();
         jL_password = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +65,6 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
         jL_login.setText("Sign In");
 
         jTF_email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTF_email.setText("Email");
         jTF_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTF_emailActionPerformed(evt);
@@ -71,7 +72,6 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
         });
 
         jP_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jP_password.setText("jPasswordField1");
         jP_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jP_passwordActionPerformed(evt);
@@ -106,13 +106,20 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
 
         jL_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jLabel1.setText("Email:");
+
+        jLabel2.setText("Password:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(249, 249, 249)
-                .addComponent(jBtn_signIn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jBtn_signIn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -133,11 +140,15 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
                 .addGap(182, 182, 182)
                 .addComponent(jL_login)
                 .addGap(18, 18, 18)
-                .addComponent(jTF_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTF_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jL_email, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jP_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jP_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jL_password, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -236,6 +247,8 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
     private javax.swing.JLabel jL_email;
     private javax.swing.JLabel jL_login;
     private javax.swing.JLabel jL_password;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jP_password;
     private javax.swing.JTextField jTF_email;
     // End of variables declaration//GEN-END:variables
