@@ -1,0 +1,8 @@
+# 5009CEM-Group-Project
+How to use database
+
+unzip the mysql connector and add to project library file
+run 'Create_Database.java' file
+run 'Create_Table.java' file
+
+Now you can run the program from either 'Admin.java' or 'WelcomePage.java'
