@@ -110,7 +110,7 @@ public class User extends javax.swing.JFrame {
     private void jBtn_companyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_companyActionPerformed
         // TODO add your handling code here:
         dispose();
-        Companies companies = new Companies();
+        CompanyList companies = new CompanyList();
         companies.setTitle("Company List");
         companies.setLocationRelativeTo(null); //center the form
         companies.setVisible(true);

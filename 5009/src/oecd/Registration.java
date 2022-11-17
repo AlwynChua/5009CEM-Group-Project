@@ -70,6 +70,11 @@ public class Registration extends javax.swing.JFrame {
 
         jTF_email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTF_email.setText("Email");
+        jTF_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTF_emailActionPerformed(evt);
+            }
+        });
 
         jBtn_signUp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtn_signUp.setText("Submit");
@@ -199,6 +204,10 @@ public class Registration extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_jBtn_signInActionPerformed
 
+    private void jTF_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTF_emailActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,6 +293,7 @@ public class Registration extends javax.swing.JFrame {
             jTF_contactNo.setText("");
             jTF_email.setText("");
             jP_password.setText("");
+            jP_cPassword.setText("");
             
             //throw new UnsupportedOperationException("Not supported yet.");
             } catch (SQLException ex) {

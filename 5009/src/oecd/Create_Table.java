@@ -56,15 +56,65 @@ public class Create_Table {
         } finally {
             System.out.println("companyinfo table created.");
         }
-        
+
         try {
             Connection conn = getConnection();
-            PreparedStatement create = conn.prepareStatement("CREATE TABLE IF NOT EXISTS testingTable(id int NOT NULL AUTO_INCREMENT, name varchar(255), police varchar(255), cincai varchar(255), state varchar(255), zipcode int(100), service varchar(255), email varchar(255), password varchar(255), PRIMARY KEY(id))");
+            PreparedStatement create = conn.prepareStatement("CREATE TABLE IF NOT EXISTS companyregister(id int NOT NULL AUTO_INCREMENT, companyName varchar(255), address varchar(255), city varchar(255), state varchar(255), zipcode int(100), service varchar(255), email varchar(255), password varchar(255), PRIMARY KEY(id))");
             create.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
         } finally {
-            System.out.println("companyinfo table created.");
+            System.out.println("companyregister table created.");
+        }
+
+        try {
+            Connection conn = getConnection();
+            PreparedStatement create = conn.prepareStatement("CREATE TABLE IF NOT EXISTS user(uid int NOT NULL AUTO_INCREMENT, fname varchar(255), lname varchar(255), ic varchar(255), email varchar(255), contact varchar(255), password varchar(255), PRIMARY KEY(uid))");
+            create.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            System.out.println("user table created.");
+        }
+
+        try {
+            Connection conn = getConnection();
+            PreparedStatement create = conn.prepareStatement("CREATE TABLE IF NOT EXISTS userRequest(urid int NOT NULL AUTO_INCREMENT PRIMARY KEY, uid int, uname varchar(255), ic varchar(255), contact varchar(255), email varchar(255), companyID varchar(255))");
+            create.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            System.out.println("userRequest table created.");
+        }
+        
+        try {
+            Connection conn = getConnection();
+            PreparedStatement create = conn.prepareStatement("CREATE TABLE IF NOT EXISTS feedbackform(fid int NOT NULL AUTO_INCREMENT PRIMARY KEY, uid varchar(255), uname varchar(255), subject varchar(255), context text(10000))");
+            create.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            System.out.println("feedbackform table created.");
+        }
+        
+        try {
+            Connection conn = getConnection();
+            PreparedStatement create = conn.prepareStatement("CREATE TABLE IF NOT EXISTS accepteduser(aid int NOT NULL AUTO_INCREMENT PRIMARY KEY, uname varchar(255), ic varchar(255), contact varchar(255), email varchar(255))");
+            create.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            System.out.println("accepteduser table created.");
+        }
+        
+        try {
+            Connection conn = getConnection();
+            PreparedStatement create = conn.prepareStatement("CREATE TABLE IF NOT EXISTS rejecteduser(rid int NOT NULL AUTO_INCREMENT PRIMARY KEY, uname varchar(255), ic varchar(255), contact varchar(255), email varchar(255))");
+            create.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            System.out.println("rejecteduser table created.");
         }
 
     }

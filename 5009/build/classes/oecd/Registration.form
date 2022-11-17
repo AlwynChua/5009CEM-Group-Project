@@ -145,6 +145,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTF_emailActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBtn_signUp">
           <Properties>

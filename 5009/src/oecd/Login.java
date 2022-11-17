@@ -64,9 +64,19 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
 
         jTF_email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTF_email.setText("Email");
+        jTF_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTF_emailActionPerformed(evt);
+            }
+        });
 
         jP_password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jP_password.setText("jPasswordField1");
+        jP_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jP_passwordActionPerformed(evt);
+            }
+        });
 
         jBtn_signIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtn_signIn.setText("Sign In");
@@ -85,7 +95,7 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
         });
 
         jBtn_Exit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jBtn_Exit.setText("Exit");
+        jBtn_Exit.setText("Return");
         jBtn_Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtn_ExitActionPerformed(evt);
@@ -169,11 +179,20 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
 
     private void jBtn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_ExitActionPerformed
         // TODO add your handling code here:
-        this.toBack();
-        setVisible(false);
-        new WelcomePage().toFront();
-        new WelcomePage().setState(java.awt.Frame.NORMAL);
+        dispose();
+        WelcomePage returnMainMenu = new WelcomePage();
+        returnMainMenu.setTitle("Main Menu");
+        returnMainMenu.setLocationRelativeTo(null); //center the form
+        returnMainMenu.setVisible(true);
     }//GEN-LAST:event_jBtn_ExitActionPerformed
+
+    private void jP_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jP_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jP_passwordActionPerformed
+
+    private void jTF_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTF_emailActionPerformed
     
     /**
      * @param args the command line arguments
@@ -237,10 +256,17 @@ public class Login extends javax.swing.JFrame { //implements ActionListener
                 //JOptionPane.showMessageDialog(null, "Email and Password Matched");
                 //display user home page
                 dispose();
-                User user = new User();
-                user.setTitle("User Home Page");
-                user.setLocationRelativeTo(null); //center the form
-                user.setVisible(true);
+                
+                String uid = res.getString("uid");
+                String fname = res.getString("fname");
+                String lname = res.getString("lname");
+                String uic = res.getString("ic");
+                String ucontact = res.getString("contact");
+                
+                CompanyList userFunctions = new CompanyList(uid, fname, lname, uic, ucontact, email, password);
+                userFunctions.setTitle("Company and Services");
+                userFunctions.setLocationRelativeTo(null); //center the form
+                userFunctions.setVisible(true);
                 //setVisible(false);
             }else{
                 System.out.println("email " + email);

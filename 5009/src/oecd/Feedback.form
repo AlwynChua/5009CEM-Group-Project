@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -38,41 +38,40 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace pref="310" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTF_toEmail" min="-2" pref="520" max="-2" attributes="0"/>
-                      <Component id="jTF_fromEmail" min="-2" pref="520" max="-2" attributes="0"/>
-                      <Component id="jTF_subject" alignment="0" min="-2" pref="520" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="482" max="-2" attributes="0"/>
-                          <Component id="jL_feedback" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jL_email" min="-2" max="-2" attributes="0"/>
-                              <Component id="jL_name" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jL_subject" min="-2" max="-2" attributes="0"/>
-                              <Component id="jL_context" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="520" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="205" max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="jBtn_submit" min="-2" pref="91" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jBtn_back" min="-2" pref="91" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jL_email" min="-2" max="-2" attributes="0"/>
+                      <Component id="jL_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jL_subject" min="-2" max="-2" attributes="0"/>
+                      <Component id="jL_context" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="310" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtuname" min="-2" pref="520" max="-2" attributes="0"/>
+                              <Component id="txtuid" min="-2" pref="520" max="-2" attributes="0"/>
+                              <Component id="txtsubject" alignment="0" min="-2" pref="520" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" min="-2" pref="520" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jL_feedback" min="-2" pref="184" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -83,17 +82,17 @@
                   <Component id="jL_feedback" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTF_fromEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtuid" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jL_name" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTF_toEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtuname" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jL_email" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTF_subject" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtsubject" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jL_subject" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -117,10 +116,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="From Email:"/>
+            <Property name="text" type="java.lang.String" value="UID:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTF_subject">
+        <Component class="javax.swing.JTextField" name="txtsubject">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -132,10 +131,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="To Email: "/>
+            <Property name="text" type="java.lang.String" value="Username:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTF_fromEmail">
+        <Component class="javax.swing.JTextField" name="txtuid">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -150,12 +149,15 @@
             <Property name="text" type="java.lang.String" value="Subject:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTF_toEmail">
+        <Component class="javax.swing.JTextField" name="txtuname">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtunameActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jL_context">
           <Properties>
@@ -172,7 +174,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTA_context">
+            <Component class="javax.swing.JTextArea" name="txtcontext">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -193,7 +195,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Back"/>
+            <Property name="text" type="java.lang.String" value="Cancel"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtn_backActionPerformed"/>

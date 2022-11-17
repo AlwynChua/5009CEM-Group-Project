@@ -17,7 +17,7 @@ public class DBConnection {
     public static Connection connectDB(){
         Connection conn = null;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //open a connection
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             return conn;

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
- 
+
 import javax.swing.*;
 
 /**
@@ -42,6 +42,7 @@ public class Admin extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        viewFeedbacks = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setTitle("hi");
@@ -79,25 +80,39 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        viewFeedbacks.setText("View User Feedbacks");
+        viewFeedbacks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewFeedbacksActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jButton1)
-                .addGap(120, 120, 120)
-                .addComponent(jButton3)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jButton1)
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(viewFeedbacks)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(viewFeedbacks)
+                .addGap(72, 72, 72))
         );
 
         pack();
@@ -105,22 +120,31 @@ public class Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        btn3 btn=new btn3();
+        CompanyEditBtn btn = new CompanyEditBtn();
         btn.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "You have clicked requested companies");
-        
-        btn1 btn=new btn1();
+
+        RequestCompanyBtn btn = new RequestCompanyBtn();
         btn.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void viewFeedbacksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFeedbacksActionPerformed
+        // TODO add your handling code here:
+
+        ViewFeedbacks viewuserfeedback = new ViewFeedbacks();
+        viewuserfeedback.setTitle("View User Feedbacks");
+        viewuserfeedback.setLocationRelativeTo(null); //center the form
+        viewuserfeedback.setVisible(true);
+
+    }//GEN-LAST:event_viewFeedbacksActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,5 +185,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JButton viewFeedbacks;
     // End of variables declaration//GEN-END:variables
 }

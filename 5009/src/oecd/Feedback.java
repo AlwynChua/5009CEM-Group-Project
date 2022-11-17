@@ -5,16 +5,14 @@
  */
 package oecd;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Feedback extends javax.swing.JFrame {
 
@@ -33,47 +31,52 @@ public class Feedback extends javax.swing.JFrame {
 
         jP_feedback = new javax.swing.JPanel();
         jL_name = new javax.swing.JLabel();
-        jTF_subject = new javax.swing.JTextField();
+        txtsubject = new javax.swing.JTextField();
         jL_email = new javax.swing.JLabel();
-        jTF_fromEmail = new javax.swing.JTextField();
+        txtuid = new javax.swing.JTextField();
         jL_subject = new javax.swing.JLabel();
-        jTF_toEmail = new javax.swing.JTextField();
+        txtuname = new javax.swing.JTextField();
         jL_context = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTA_context = new javax.swing.JTextArea();
+        txtcontext = new javax.swing.JTextArea();
         jL_feedback = new javax.swing.JLabel();
         jBtn_back = new javax.swing.JButton();
         jBtn_submit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jL_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jL_name.setText("From Email:");
+        jL_name.setText("UID:");
 
-        jTF_subject.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtsubject.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jL_email.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jL_email.setText("To Email: ");
+        jL_email.setText("Username:");
 
-        jTF_fromEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtuid.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jL_subject.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jL_subject.setText("Subject:");
 
-        jTF_toEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtuname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtuname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtunameActionPerformed(evt);
+            }
+        });
 
         jL_context.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jL_context.setText("Context:");
 
-        jTA_context.setColumns(20);
-        jTA_context.setRows(5);
-        jScrollPane1.setViewportView(jTA_context);
+        txtcontext.setColumns(20);
+        txtcontext.setRows(5);
+        jScrollPane1.setViewportView(txtcontext);
 
         jL_feedback.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jL_feedback.setText("Feedback");
 
         jBtn_back.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jBtn_back.setText("Back");
+        jBtn_back.setText("Cancel");
         jBtn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtn_backActionPerformed(evt);
@@ -92,34 +95,33 @@ public class Feedback extends javax.swing.JFrame {
         jP_feedback.setLayout(jP_feedbackLayout);
         jP_feedbackLayout.setHorizontalGroup(
             jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jP_feedbackLayout.createSequentialGroup()
-                .addContainerGap(310, Short.MAX_VALUE)
-                .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTF_toEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTF_fromEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTF_subject, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(205, 205, 205))
-            .addGroup(jP_feedbackLayout.createSequentialGroup()
-                .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jP_feedbackLayout.createSequentialGroup()
-                        .addGap(482, 482, 482)
-                        .addComponent(jL_feedback))
-                    .addGroup(jP_feedbackLayout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jL_email)
-                            .addComponent(jL_name)
-                            .addComponent(jL_subject)
-                            .addComponent(jL_context))
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(205, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_feedbackLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jBtn_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBtn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
+            .addGroup(jP_feedbackLayout.createSequentialGroup()
+                .addGap(204, 204, 204)
+                .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jL_email)
+                    .addComponent(jL_name)
+                    .addComponent(jL_subject)
+                    .addComponent(jL_context))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_feedbackLayout.createSequentialGroup()
+                .addContainerGap(310, Short.MAX_VALUE)
+                .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_feedbackLayout.createSequentialGroup()
+                        .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtuname, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtuid, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtsubject, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(205, 205, 205))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_feedbackLayout.createSequentialGroup()
+                        .addComponent(jL_feedback, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(397, 397, 397))))
         );
         jP_feedbackLayout.setVerticalGroup(
             jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,15 +130,15 @@ public class Feedback extends javax.swing.JFrame {
                 .addComponent(jL_feedback)
                 .addGap(18, 18, 18)
                 .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTF_fromEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtuid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jL_name))
                 .addGap(18, 18, 18)
                 .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTF_toEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jL_email))
                 .addGap(18, 18, 18)
                 .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTF_subject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jL_subject))
                 .addGap(18, 18, 18)
                 .addGroup(jP_feedbackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,46 +165,52 @@ public class Feedback extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //delcare the database
+    Connection con1;
+    PreparedStatement insert;
+    
     private void jBtn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_backActionPerformed
         // TODO add your handling code here:
         dispose();
-        Companies companies = new Companies();
-        companies.setTitle("User Home Page");
-        companies.setLocationRelativeTo(null); //center the form
-        companies.setVisible(true);
     }//GEN-LAST:event_jBtn_backActionPerformed
 
     private void jBtn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_submitActionPerformed
         // TODO add your handling code here:
-        String fromEmail = jTF_fromEmail.getText();
-        String fromEmailPassword = "";
-        String toEmail = jTF_toEmail.getText();
-        String subject = jTF_subject.getText();
-        String comment = jTA_context.getText();
-        
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.auth", "");
-        
-        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator(){
-            protected PasswordAuthentication getPasswordAuthentication(){
-                return new PasswordAuthentication(fromEmail, fromEmailPassword);
-            }
-        });
-        
-        try{
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromEmail));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-            message.setSubject(subject);
-            message.setText(jTA_context.getText());
-            Transport.send(message);
-        }catch(Exception ex){
-            System.out.println(""+ex);
+
+        //to set string and get the text from form
+        String uid = txtuid.getText();
+        String uname = txtuname.getText();
+        String subject = txtsubject.getText();
+        String context = txtcontext.getText();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //connect to database and insert the credentials
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost/5009_database", "root", "");
+            insert = con1.prepareStatement("insert into feedbackform(uid,uname,subject,context)values(?,?,?,?)");
+            insert.setString(1, uid);
+            insert.setString(2, uname);
+            insert.setString(3, subject);
+            insert.setString(4, context);
+            insert.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Feedback has been sent!");
+            
+            dispose();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CompanyEditBtn.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CompanyEditBtn.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
     }//GEN-LAST:event_jBtn_submitActionPerformed
+
+    private void txtunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtunameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtunameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,9 +257,9 @@ public class Feedback extends javax.swing.JFrame {
     private javax.swing.JLabel jL_subject;
     private javax.swing.JPanel jP_feedback;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTA_context;
-    private javax.swing.JTextField jTF_fromEmail;
-    private javax.swing.JTextField jTF_subject;
-    private javax.swing.JTextField jTF_toEmail;
+    private javax.swing.JTextArea txtcontext;
+    private javax.swing.JTextField txtsubject;
+    private javax.swing.JTextField txtuid;
+    private javax.swing.JTextField txtuname;
     // End of variables declaration//GEN-END:variables
 }
