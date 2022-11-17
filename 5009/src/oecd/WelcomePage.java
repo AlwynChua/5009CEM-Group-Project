@@ -121,7 +121,7 @@ public class WelcomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         Login ulogin = new Login();
-        ulogin.setTitle("Main Menu");
+        ulogin.setTitle("User Login");
         ulogin.setLocationRelativeTo(null); //center the form
         ulogin.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -130,7 +130,7 @@ public class WelcomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         companyLogin clogin = new companyLogin();
-        clogin.setTitle("Main Menu");
+        clogin.setTitle("Company Login");
         clogin.setLocationRelativeTo(null); //center the form
         clogin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
